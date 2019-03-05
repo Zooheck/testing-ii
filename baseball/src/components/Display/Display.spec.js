@@ -2,17 +2,22 @@ import React from 'react'
 import { render } from 'react-testing-library'
 import 'jest-dom/extend-expect'
 
-import Display from './Display'
+import Display from './Display.js'
+
+const stats = {
+    balls: 1,
+    strikes: 1
+}
 
 describe('<Display />', () => {
-    it('should show "strikes:"', () => {
-        const { getByText } = render(<Display stats={{balls: 0, strikes: 0}}/>);
-
-        expect(getByText(/strikes:/i)).toBeInTheDocument()
+    it('balls display changes depending on state', () => {
+        const { getByTestId } = render(<Display stats={stats}/>);
+        const text = getByTestId('balls').textContent;
+        expect(text).toEqual(`Balls: ${stats.balls}`)
     });
-    it('should show "balls:"', () => {
-        const { getByText } = render(<Display stats={{balls: 0, strikes: 0}}/>);
-
-        expect(getByText(/balls:/i)).toBeInTheDocument()
+    it('strikes display changes depending on state', () => {
+        const { getByTestId } = render(<Display stats={stats}/>);
+        const text = getByTestId('strikes').textContent;
+        expect(text).toEqual(`Strikes: ${stats.strikes}`)
     });
 })
