@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Display from './Display';
+import Display from '../Display/Display';
 
 export default class Dashboard extends Component {
   state = {
