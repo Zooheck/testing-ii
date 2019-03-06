@@ -18,6 +18,6 @@ describe('<Display />', () => {
     it('strikes display changes depending on state', () => {
         const { getByTestId } = render(<Display stats={stats}/>);
         const text = getByTestId('strikes').textContent;
-        expect(text).toEqual(`Strikes: ${stats.strikes}`)
+        expect(text).toEqual(`1`)
     });
 })
